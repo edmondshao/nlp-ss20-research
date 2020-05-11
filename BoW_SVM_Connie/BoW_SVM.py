@@ -6,7 +6,7 @@ import re
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn import svm
-from sklearn.metrics import accuracy_score, precision_score, recall_score
+from sklearn.metrics import confusion_matrix,accuracy_score, precision_score, recall_score
 import scipy.stats as ss
 import seaborn as sns
 #nltk.download('stopwords')
@@ -58,6 +58,9 @@ SVM.fit(count_occurs_train,y_train)
 
 predictions_SVM = SVM.predict(count_occurs_test)
 
+cm = confusion_matrix(y_test, predictions_SVM)
+
+print ("Confusion Matrix:\n",cm)
 print("SVM Accuracy Score -> ", accuracy_score(predictions_SVM, y_test) * 100, '%')
 print("SVM Precision Score -> ", round(precision_score(predictions_SVM, y_test), 2))
 print("SVM Recall Score -> ", round(recall_score(predictions_SVM, y_test), 2))
