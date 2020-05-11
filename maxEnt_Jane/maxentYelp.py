@@ -25,8 +25,8 @@ X_train = cv.fit_transform(train_data_2["Review"]).toarray()
 y_train = train_data_2["Liked"].values
 X_test = cv.transform(test_data["Review"]).toarray()
 y_test = test_data["Liked"].values
+print(X_train)
 
-print(len(X_train))
 
 #(X, y) = (features matrix, labels)
 maxent = linear_model.LogisticRegression(penalty = 'none', C=1.0)
